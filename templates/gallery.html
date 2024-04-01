@@ -8,70 +8,72 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <style>
         body {
-            background-color: #FFDAB9; /* Peach background, feels light and festive */
-            font-family: 'Indie Flower', cursive; /* Fun, handwritten font */
+            background-color: #FFDAB9;
+            font-family: 'Indie Flower', cursive;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center-align the child elements */
+            margin: 0;
+            padding: 0;
         }
         .text-overlay-container {
-            background-image: url('/static/Geburtstag Nordsee Vintage-Fotos Virtueller Hintergrund.jpg'); /* Your background image */
+            background-image: url('/static/Geburtstag Nordsee Vintage-Fotos Virtueller Hintergrund.jpg');
             background-size: cover;
-            padding: 20px;
-            border-radius: 15px;
-            color: white; /* Ensures text is readable on likely dark background */
-            text-align: center; /* Center-align the text */
-            padding: 100px 20px; /* Increase padding to make space for your text */
+            color: white;
+            text-align: center;
+            width: 100%; /* Take full width */
+            padding: 100px 50px; /* Adjust as needed for your text */
+            box-sizing: border-box; /* Padding included in width */
         }
 
         .gallery img {
-            width: 100%; /* Adjust to fill container */
+            width: 100%;
             height: auto;
-            margin-bottom: 15px; /* Space between images */
-            object-fit: cover; /* Crop images to fit the aspect ratio */
-            border-radius: 10px; /* Rounded corners for a softer look */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+            margin-bottom: 15px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .gallery figure {
-            margin: 0; /* Remove default margin from <figure> */
+            margin: 0;
         }
         .container {
-            background-size: cover; /* Cover the entire container area */
-            padding: 20px; /* Add some padding */
-            border-radius: 15px; /* Rounded corners for the container */
+            padding: 20px;
+            width: 100%; /* Match width of the overlay */
         }
-        @media (min-width: 768px) { /* Adjusting for medium to large screens */
+        @media (min-width: 768px) {
             .gallery-item {
                 display: flex;
-                justify-content: center; /* Center the figure/image in the column */
+                justify-content: center;
             }
             .gallery img {
-                max-width: 100%; /* Images fill their containers */
-                height: auto; /* Maintain aspect ratio */
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <div class="text-overlay-container">
-        <h1>Happy Birthday from Heike and Bengt!</h1>
-        <p>Enjoy this special day with memories we've shared.</p>
+        <h1>Happy Birthday!</h1>
+        <p>A special celebration from Heike and Bengt.</p>
     </div>
-<div class="container py-4">
-    <div class="row">
-        {% for image in images %}
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4"> <!-- Responsive grid columns -->
-            <figure class="gallery-item">
-                <a href="{{ url_for('static', filename=image['filename']) }}" data-fancybox="gallery" data-caption="{{ image['filename'].split('/')[-1] }}">
-                    <img src="{{ url_for('static', filename=image['filename']) }}" alt="Image" class="img-fluid">
-                </a>
-            </figure>
+    <div class="container py-4">
+        <div class="row">
+            {% for image in images %}
+            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                <figure class="gallery-item">
+                    <a href="{{ url_for('static', filename=image['filename']) }}" data-fancybox="gallery" data-caption="{{ image['filename'].split('/')[-1] }}">
+                        <img src="{{ url_for('static', filename=image['filename']) }}" alt="Image" class="img-fluid">
+                    </a>
+                </figure>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>
-
